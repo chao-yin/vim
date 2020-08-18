@@ -1,3 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/chaos/.emacs.d/elisp'
+let g:netrw_dirhist_5='/home/chaos/.emacs.d/eaf'
+let g:netrw_dirhist_4='/var/log/journal'
+let g:netrw_dirhist_3='/home/chaos/.config/fcitx5/conf'
+let g:netrw_dirhist_2='/home/chaos/Note/Archlinux_installation'
 let g:netrw_dirhist_1='/etc/apt/sources.list.d'
