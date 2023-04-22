@@ -27,14 +27,23 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 "Plug 'Raimondi/delimitMate'
 "Plug 'Valloric/YouCompleteMe'
+Plug 'habamax/vim-psionic'
+Plug 'voldikss/vim-floaterm'
 call plug#end()
+
+" configuration for floaterm 
+source ~/.vim/init/floaterm.vim
+
 
 " ************ basic setting for vim
 set cursorline
 syntax enable
-colorscheme gruvbox
-set background=dark
+set termguicolors
+colorscheme psionic
+set background=light
 set ts=4
+set tabstop=4
+set shiftwidth=4    " Indents will have a width of 4
 set expandtab
 set cindent
 "set autoindent
@@ -45,9 +54,50 @@ set number
 set noautoindent
 set backspace=indent,eol,start
 set tags=./.tags;,.tags
+set guifont=SFMonoPowerline-Regular:h15
+
+" ###### some shortcut
+" vim-powered terminal in split window
+map <Leader>t :term ++close<cr>
+tmap <Leader>t <c-w>:term ++close<cr>
+
+" change buffers
+"nmap <C-Right> :bnext<CR> 
+noremap <C-x><C-Left> :bn<CR>
+noremap <C-p> :bp<CR>
 
 
 "############################### Airline 
+" air-line
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
 set noshowmode
 "let g:indentLine_color_term = 239 " adjust the color of indentLine 
 let g:airline#extensions#tabline#enabled = 1  "Automatically displays all buffers when there's only one tab open.
@@ -83,8 +133,9 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-"let g:Lf_ShortcutF = "<leader>ff"
-"noremap ff :LeaderfFile<CR>
+let g:Lf_ShortcutF = "<leader>ff"
+noremap ff :LeaderfFile<CR>
+noremap fb :LeaderfBuffer<CR>
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
