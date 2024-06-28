@@ -38,7 +38,7 @@ source ~/.vim/init/floaterm.vim
 " ************ basic setting for vim
 set cursorline
 syntax enable
-set termguicolors
+"set termguicolors
 colorscheme psionic
 set background=light
 set ts=4
@@ -47,6 +47,9 @@ set shiftwidth=4    " Indents will have a width of 4
 set expandtab
 set cindent
 "set autoindent
+set hlsearch
+hi Search ctermbg=LightYellow
+hi Search ctermfg=Red
 set number 
 "set pastetoggle=<C-e>
 "set paste=<C-w>
@@ -66,6 +69,10 @@ tmap <Leader>t <c-w>:term ++close<cr>
 noremap <C-x><C-Left> :bn<CR>
 noremap <C-p> :bp<CR>
 
+" Remember position of last edit and return on reopen
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 "############################### Airline 
 " air-line
